@@ -1,4 +1,4 @@
-const PenIcon = ({ color = "#171717" }: { color: string }) => {
+const PenIcon = ({ color = "#171717" }: { color?: string }) => {
   return (
     <svg
       width="20"

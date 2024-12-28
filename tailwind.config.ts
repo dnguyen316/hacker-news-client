@@ -19,6 +19,9 @@ export default {
           200: "#E5E5E5",
           50: "#FAFAFA",
         },
+        stone: {
+          50: "#FAFAF9",
+        },
         orange: {
           600: "#EA580C",
           500: "#F97316",

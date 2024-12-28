@@ -1,4 +1,4 @@
-const TimeLindeIcon = ({ color = "#171717" }: { color: string }) => {
+const TimeLineIcon = ({ color = "#171717" }: { color?: string }) => {
   return (
     <svg
       width="20"
@@ -15,4 +15,4 @@ const TimeLindeIcon = ({ color = "#171717" }: { color: string }) => {
   );
 };
 
-export default TimeLindeIcon;
+export default TimeLineIcon;

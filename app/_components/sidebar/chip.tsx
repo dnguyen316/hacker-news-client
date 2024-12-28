@@ -1,8 +1,10 @@
+"use client";
 import HomeIcon from "../icons/home";
 import SpeakLineIcon from "../icons/speakLine";
 import BriefcaseIcon from "../icons/briefcase";
 import EyeLineIcon from "../icons/eyeline";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const Menu = [
   {
@@ -15,19 +17,19 @@ const Menu = [
     key: "ask",
     icon: "speakLine",
     name: "Ask",
-    url: "/",
+    url: "/ask",
   },
   {
     key: "show",
     icon: "eyeLine",
     name: "Show",
-    url: "/",
+    url: "/show",
   },
   {
     key: "jobs",
     icon: "briefcase",
     name: "Jobs",
-    url: "/",
+    url: "/jobs",
   },
 ];
 
@@ -40,6 +42,8 @@ const iconMapping = {
 };
 
 const SidebarChip = () => {
+  const pathname = usePathname();
+
   return (
     <ul className="space-y-4 mt-4 ml-[-6px]">
       {Menu.map((item) => {
@@ -48,13 +52,23 @@ const SidebarChip = () => {
         return (
           <Link
             key={item.key}
-            className="flex items-center space-x-4 p-2 text-gray-800 rounded-md hover:bg-orange-100 group cursor-pointer"
+            className={`flex items-center space-x-4 p-2 text-gray-800 rounded-md hover:bg-orange-100 group cursor-pointer ${
+              item.url === pathname && "bg-orange-100"
+            }`}
             href={item.url}
           >
             {IconComponent && (
-              <IconComponent className="h-6 w-6 group-hover:text-orange-500 text-[#525252] " />
+              <IconComponent
+                className={`h-6 w-6 group-hover:text-orange-500 text-[#525252] ${
+                  item.url === pathname && "text-orange-500"
+                }`}
+              />
             )}
-            <span className=" font-medium group-hover:text-orange-600">
+            <span
+              className={`font-medium group-hover:text-orange-600 ${
+                item.url === pathname && "text-orange-500"
+              }`}
+            >
               {item.name}
             </span>
           </Link>

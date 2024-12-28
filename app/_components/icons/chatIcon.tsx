@@ -1,4 +1,4 @@
-const ChatIcon = ({ color = "#171717" }: { color: string }) => {
+const ChatIcon = ({ color = "#171717" }: { color?: string }) => {
   return (
     <svg
       width="20"

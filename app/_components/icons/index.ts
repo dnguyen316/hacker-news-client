@@ -7,3 +7,5 @@ export * from "./chatIcon";
 export * from "./speakLine";
 export * from "./timeLine";
 export * from "./pen";
+export * from "./article-line";
+export * from "./arrow-double-line";

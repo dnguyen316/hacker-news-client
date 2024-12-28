@@ -1,0 +1,14 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug Server",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${workspaceFolder}/hacker-news-api/src/app/server.ts",
+      "preLaunchTask": "tsc: build",
+      "outFiles": ["${workspaceFolder}/hacker-news-api/dist/**/*.js"]
+    }
+  ]
+}

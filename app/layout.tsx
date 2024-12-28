@@ -1,8 +1,9 @@
-import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "./globals.css";
+import localFont from "next/font/local";
 import TopNav from "./_components/topnav/topnav";
 import Sidebar from "./_components/sidebar/sidebar";
+import ApolloContainer from "./providers/apollo-provider";
+import { Metadata } from "next";
 
 const notoSans = localFont({
   src: "./fonts/NotoSans-VariableFont_wdth,wght.ttf",
@@ -27,12 +28,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${notoSans.variable} ${notoMono.variable} antialiased`}>
-        <TopNav />
-        <div className="flex">
-          <Sidebar />
-          {children}
-        </div>
+      <body
+        className={`${notoSans.variable} ${notoMono.variable} antialiased flex flex-col min-h-[100vh]`}
+      >
+        <ApolloContainer>
+          <TopNav />
+          <div className="flex">
+            <Sidebar />
+            <main className="py-8 pl-4 md:pl-16">{children}</main>
+          </div>
+        </ApolloContainer>
       </body>
     </html>
   );
