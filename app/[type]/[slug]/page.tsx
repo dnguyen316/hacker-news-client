@@ -9,32 +9,36 @@ import { StoryDetail } from "@/lib/constants/types";
 import { getArticleById } from "@/actions/article";
 
 interface ArticleDetailPageProps {
-  params: {
+  params: Promise<{
     type: string;
     slug: string;
-  };
+  }>;
 }
 
 // Generate Metadata for SEO
 export async function generateMetadata({
   params,
-}: ArticleDetailPageProps): Promise<Metadata> {
-  const { type, slug } = await params;
+}: ArticleDetailPageProps): Promise<Metadata | undefined> {
+  try {
+    const { type, slug } = await params;
 
-  return {
-    title: `Hacker News | ${slug.replace(/-/g, " ")} ${type} Articles`,
-    description: `Read about ${slug.replace(
-      /-/g,
-      " "
-    )} in the ${type} category.`,
-    openGraph: {
-      title: `${slug.replace(/-/g, " ")}`,
-      description: `Discover more about ${slug.replace(
+    return {
+      title: `Hacker News | ${slug.replace(/-/g, " ")} ${type} Articles`,
+      description: `Read about ${slug.replace(
         /-/g,
         " "
       )} in the ${type} category.`,
-    },
-  };
+      openGraph: {
+        title: `${slug.replace(/-/g, " ")}`,
+        description: `Discover more about ${slug.replace(
+          /-/g,
+          " "
+        )} in the ${type} category.`,
+      },
+    };
+  } catch (error) {
+    console.log("error: ", error);
+  }
 }
 
 const ArticleDetailPage = async ({ params }: ArticleDetailPageProps) => {
@@ -55,7 +59,7 @@ const ArticleDetailPage = async ({ params }: ArticleDetailPageProps) => {
   } = storyDetail;
 
   if (!content) {
-    <div>Not content found</div>;
+    return <div>Not content found</div>;
   }
 
   return (

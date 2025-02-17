@@ -14,12 +14,11 @@ const CommentSection: React.FC<CommentSectionProps> = (props) => {
   const { articleId, commentCounts } = props;
   const [page, setPage] = useState(1);
 
-  const { comments, isLoadingComment, error, fetchMore, hasMoreComment } =
-    useArticleComment({
-      parentId: articleId,
-      page: page,
-      limit: 5,
-    });
+  const { comments, isLoadingComment, error, fetchMore } = useArticleComment({
+    parentId: articleId,
+    page: page,
+    limit: 5,
+  });
 
   const handleLoadMorePage = async () => {
     const nextPage = page + 1;
