@@ -1,8 +1,8 @@
 import "./globals.css";
 import localFont from "next/font/local";
-import TopNav from "./_components/topnav/topnav";
-import Sidebar from "./_components/sidebar/sidebar";
-import ApolloContainer from "./providers/apollo-provider";
+import TopNav from "../components/topnav/topnav";
+import Sidebar from "../components/sidebar/sidebar";
+import ApolloContainer from "../providers/apollo-provider";
 import { Metadata } from "next";
 
 const notoSans = localFont({

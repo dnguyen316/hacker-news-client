@@ -1,4 +1,4 @@
-import ArticleList from "./_components/article/article-list";
+import ArticleList from "../components/article/article-list";
 
 export const metadata = {
   title: "New",
@@ -14,7 +14,7 @@ export default function Home() {
         </h1>
         <p className="text-xs text-neutral-500 mb-3">{metadata.description}</p>
       </div>
-      <ArticleList type="top-new" />
+      <ArticleList type="top" />
     </>
   );
 }

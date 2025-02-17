@@ -1,11 +1,12 @@
-import HTMLContent from "@/app/_components/html-content/html-content";
-import ArrowDoubleLineIcon from "@/app/_components/icons/arrow-double-line";
-import ChatIcon from "@/app/_components/icons/chatIcon";
-import PenIcon from "@/app/_components/icons/pen";
-import TimeAgo from "@/app/_components/timeago/timeago";
-import { StoryDetail } from "@/app/_constants/types";
-import { getArticleById } from "@/app/actions/article";
 import { Metadata } from "next";
+import CommentSection from "@/components/comment/comment-section";
+import HTMLContent from "@/components/html-content/html-content";
+import ArrowDoubleLineIcon from "@/components/icons/arrow-double-line";
+import ChatIcon from "@/components/icons/chatIcon";
+import PenIcon from "@/components/icons/pen";
+import TimeAgo from "@/components/timeago/timeago";
+import { StoryDetail } from "@/lib/constants/types";
+import { getArticleById } from "@/actions/article";
 
 interface ArticleDetailPageProps {
   params: {
@@ -58,34 +59,37 @@ const ArticleDetailPage = async ({ params }: ArticleDetailPageProps) => {
   }
 
   return (
-    <article>
-      <h2 className="text-4xl font-semibold text-neutral-900">{title}</h2>
-      <div className="flex md:items-center md:flex-row flex-col">
-        <div className="mb-4 mt-2 flex items-center text-neutral-600 text-xs">
-          <div className="flex items-center gap-1 mr-3 text-sm">
-            <span>
-              <ArrowDoubleLineIcon />
-            </span>{" "}
-            {score} points
+    <article className="flex gap-12 flex-col">
+      <header>
+        <h2 className="text-4xl font-semibold text-neutral-900">{title}</h2>
+        <div className="flex md:items-center md:flex-row flex-col">
+          <div className="mb-4 mt-2 flex items-center text-neutral-600 text-xs">
+            <div className="flex items-center gap-1 mr-3 text-sm">
+              <span>
+                <ArrowDoubleLineIcon />
+              </span>{" "}
+              {score} points
+            </div>
+            <div className="flex items-center gap-1 mr-3 text-sm">
+              <span>
+                <PenIcon />
+              </span>{" "}
+              by <span className="text-orange-600">{author}</span>
+            </div>
+            <div className="flex items-center gap-1 md:mr-3 text-sm">
+              <TimeAgo time={time} />
+            </div>
           </div>
-          <div className="flex items-center gap-1 mr-3 text-sm">
+          <div className="flex items-center gap-1 text-sm md:mt-2 md:mb-4 text-neutral-600">
             <span>
-              <PenIcon />
-            </span>{" "}
-            by <span className="text-orange-600">{author}</span>
-          </div>
-          <div className="flex items-center gap-1 md:mr-3 text-sm">
-            <TimeAgo time={time} />
+              <ChatIcon />
+            </span>
+            {commentsCount} comments
           </div>
         </div>
-        <div className="flex items-center gap-1 text-sm md:mt-2 md:mb-4 text-neutral-600">
-          <span>
-            <ChatIcon />
-          </span>
-          {commentsCount} comments
-        </div>
-      </div>
+      </header>
       <HTMLContent content={content} />
+      <CommentSection articleId={Number(id)} commentCounts={commentsCount} />
     </article>
   );
 };

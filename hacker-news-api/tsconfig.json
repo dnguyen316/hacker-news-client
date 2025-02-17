@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "rootDir": "src", // Ensure files are structured under 'src'
+    "outDir": "dist", // Output files to 'dist'
+    "lib": ["es2020"], // Use modern JavaScript features
+    "target": "es2016", // Target ES2020 for compatibility
+    "module": "commonjs", // Compile to ES Modules
+    "moduleResolution": "node", // Resolve modules like Node.js
+    "esModuleInterop": true, // Allow compatibility with CommonJS
+    "strict": true, // Enable strict type checking
+    "declaration": true, // Generate type definitions
+    "forceConsistentCasingInFileNames": true, // Enforce consistent casing
+    "skipLibCheck": true, // Skip type-checking for dependencies
+    "baseUrl": "./src",
+    "paths": {
+      "@modules/*": ["modules/*"],
+      "@shared/*": ["shared/*"],
+      "@app/*": ["app/*"],
+      "@config/*": ["config/*"]
+    }
+  },
+
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
+}

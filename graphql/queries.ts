@@ -78,3 +78,17 @@ export const GET_STORY_DETAIL_BY_ID = `
     }
   }
 `;
+
+export const GET_COMMENTS_BY_ID = gql`
+  query ArticleComments($parentId: Int, $page: Int, $limit: Int) {
+    articleComments(parentId: $parentId, page: $page, limit: $limit) {
+      id
+      author
+      kids
+      text
+      time
+      type
+      parent
+    }
+  }
+`;

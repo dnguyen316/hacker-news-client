@@ -1,4 +1,4 @@
-import ArticleList from "../_components/article/article-list";
+import ArticleList from "../../components/article/article-list";
 
 export const metadata = {
   title: "Ask",
