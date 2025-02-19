@@ -84,18 +84,26 @@ To set up the project locally, follow these steps:
 The project follows a straightforward structure. Here’s an overview:
 
 ```graphql
-  hacker-news-client/
-  ├── public/
-  │   └── index.html         # The main HTML file
-  ├── src/
-  │   ├── components/        # Reusable UI components
-  │   │   ├── StoryList.tsx   # Component to render list of stories with infinite scroll
-  │   │   ├── StoryItem.tsx   # Component for individual story items
-  │   │   └── StoryDetail.tsx # Component to display story details and nested comments
-  │   ├── App.tsx             # Main application component
-  │   └── index.tsx           # Entry point for the React application
-  ├── package.json           # Project dependencies and scripts
-  └── README.md              # Project documentation
+hacker-news-client/
+├── .vscode/             # VS Code workspace settings
+├── actions/             # Contains reusable server actions
+├── app/                 # Main application logic and Next.js pages
+├── components/          # UI components used across the application
+├── graphql/             # GraphQL queries and API interactions
+├── hooks/               # Custom React hooks for state and effects management
+├── lib/constants/       # Application constants and shared variables
+├── providers/           # Context providers for global state management
+├── public/              # Static assets like images and icons
+├── .eslintrc.json       # ESLint configuration file
+├── .gitignore           # Git ignored files and folders
+├── README.md            # Project documentation
+├── TODOS.md             # Development tasks and planned features
+├── next.config.ts       # Next.js configuration file
+├── package.json         # Project dependencies and scripts
+├── package-lock.json    # Package lock file for dependencies
+├── postcss.config.mjs   # PostCSS configuration for Tailwind CSS
+├── tailwind.config.ts   # Tailwind CSS configuration
+└── tsconfig.json        # TypeScript configuration
 ```
 
 # API Reference
